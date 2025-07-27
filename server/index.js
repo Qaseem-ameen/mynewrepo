@@ -24,18 +24,15 @@ function authenticateToken(req, res, next) {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const express = require('express');
-const app = express();
-
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 // middlewares
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
-
+app.use(cors({
+  origin: 'https://masjidkhalid.onrender.com', // 👈 أو 'https://اسم_موقعك.رابط'
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
 // SQLite setup
 let db;
 (async () => {
