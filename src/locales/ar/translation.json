@@ -1,0 +1,13 @@
+{
+  "masjid_name": "مسجد خالد بن الوليد",
+  "prayer_times":"أوقات الصلاة",
+  "activities":"النشاطات",
+  "add_activity":"إضافة نشاط",
+  "title":"العنوان",
+  "description":"الوصف",
+  "image_url_optional":"الصورة",
+  "add":"إضافة",
+  "imam_of_the_mosque":"إمام المسجد",
+  "friday_khatib":"خطيب الجمعة",
+  "about_mosque":"حول المسجد"
+}

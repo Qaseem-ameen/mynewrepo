@@ -1,0 +1,14 @@
+{
+  "masjid_name": "Masjid Khalid Ibn Al-Walid",
+  "prayer_times":"Prayer Times",
+  "النشاطات":"activities",
+  "إضافة نشاط":"add_activity",
+  "العنوان":"title",
+  "الوصف":"description",
+  "الصورة":"image_url_optional",
+  "إضافة":"add",
+  "إمام المسجد":"imam_of_the_mosque",
+  "خطيب الجمعة":"friday_khatib"
+
+
+}

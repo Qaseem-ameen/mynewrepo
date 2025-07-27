@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "masjid-project-ae5f9",
+    "firebase storage:set-cors cors.json": "masjid-project-ae5f9",
+    "firebase storage:bucket": "masjid-project-ae5f9",
+    "Hosting": "masjid-project-ae5f9"
+  },
+  "targets": {},
+  "etags": {}
+}
