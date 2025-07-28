@@ -271,6 +271,25 @@ app.get('/api/lessons', async (req, res) => {
   }
 });
 
+// DELETE /api/activities/:id
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  const sql = 'DELETE FROM activities WHERE id = ?';
+  db.run(sql, [id], function (err) {
+    if (err) {
+      console.error('فشل في حذف النشاط:', err.message);
+      return res.status(500).json({ message: 'فشل في حذف النشاط' });
+    }
+
+    if (this.changes === 0) {
+      return res.status(404).json({ message: 'النشاط غير موجود' });
+    }
+
+    res.json({ message: 'تم حذف النشاط بنجاح' });
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
