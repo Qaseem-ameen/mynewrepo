@@ -110,7 +110,7 @@ let db;
 })();
 
 // JWT secret
-const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+const JWT_SECRET = process.env.JWT_SECRET || 'secret1234567890';
 
 // Multer setup for image uploads
 const storage = multer.diskStorage({
