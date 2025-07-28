@@ -272,7 +272,7 @@ app.get('/api/lessons', async (req, res) => {
 });
 
 // DELETE /api/activities/:id
-api.delete('/api/activities/:id', (req, res) => {
+app.delete('/api/activities/:id', (req, res) => {
   const { id } = req.params;
 
   const sql = 'DELETE FROM activities WHERE id = ?';
