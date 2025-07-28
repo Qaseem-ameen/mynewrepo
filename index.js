@@ -6,7 +6,7 @@ const multer = require('multer');
 const path = require('path');
 const { open } = require('sqlite');
 const sqlite3 = require('sqlite3');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
