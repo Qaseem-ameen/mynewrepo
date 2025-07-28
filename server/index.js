@@ -162,8 +162,13 @@ const authenticate = (req, res, next) => {
 
 // Get all activities
 app.get('/api/activities', async (req, res) => {
+  try{
   const activities = await db.all('SELECT * FROM activities ORDER BY id DESC');
   res.json(activities);
+  }catch (err) {
+    console.error('Database error:', err);
+    res.status(500).json({ message: 'حدث خطأ أثناء جلب بيانات الخطيب' });
+  }
 });
 
 // Add new activity (admin only)
