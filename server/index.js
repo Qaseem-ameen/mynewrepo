@@ -28,13 +28,24 @@ const PORT = process.env.PORT || 5000;
 // app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+
+const allowedOrigins = ['https://masjid-khalid.netlify.app'];
+
 app.use(cors({
-  origin: 'https://masjid-khalid.netlify.app', // 👈 أو 'https://اسم_موقعك.رابط'
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders:['Content-Type','Authorization'],
-  credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
-app.options('*',cors());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
+});
 // SQLite setup
 let db;
 (async () => {
