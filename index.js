@@ -290,6 +290,20 @@ app.delete('/api/activities/:id', (req, res) => {
   });
 });
 
+// مثال: DELETE /api/lessons/:id
+app.delete('/api/lessons/:id', (req, res) => {
+  const lessonId = req.params.id;
+
+  const sql = 'DELETE FROM lessons WHERE id = ?';
+  db.run(sql, [lessonId], function (err) {
+    if (err) {
+      console.error('Error deleting lesson:', err);
+      return res.status(500).json({ error: 'فشل الحذف' });
+    }
+    res.status(200).json({ message: 'تم حذف الدرس بنجاح' });
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
