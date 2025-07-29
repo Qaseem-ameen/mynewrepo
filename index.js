@@ -276,7 +276,7 @@ app.get('/api/lessons', async (req, res) => {
 router.delete('/api/activities/:id', (req, res) => {
   const { id } = req.params;
   const sql = 'DELETE FROM activities WHERE id = ?';
- await db.run(sql, [id], function (err) {
+  db.run(sql, [id], function (err) {
     if (err) {
       return res.status(500).json({ message: 'فشل في حذف النشاط' });
     }
