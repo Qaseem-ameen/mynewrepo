@@ -535,7 +535,25 @@ app.delete('/api/lessons/:id', async (req, res) => {
   if (result.rowCount === 0) return res.status(404).json({ message: 'الدرس غير موجود' });
   res.json({ message: 'تم حذف الدرس بنجاح' });
 });
+// هذا الكود يتم تنفيذه مرة واحدة فقط لجعل مستخدم admin
+(async () => {
+  try {
+    const email = 'adminmasjid100@gmail.com';
 
+    const result = await pool.query(
+      'UPDATE users SET isadmin = true WHERE email = $1 RETURNING *',
+      [email]
+    );
+
+    if (result.rowCount > 0) {
+      console.log(`تم تعيين المستخدم ${email} كـ admin بنجاح ✅`);
+    } else {
+      console.log(`لم يتم العثور على مستخدم بهذا الإيميل: ${email} ❌`);
+    }
+  } catch (error) {
+    console.error('حدث خطأ أثناء تحديث المستخدم:', error.message);
+  }
+})();
 // Start server
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
