@@ -20,7 +20,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-const router=express.Router();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -273,7 +273,7 @@ app.get('/api/lessons', async (req, res) => {
 });
 
 // DELETE /api/activities/:id
-router.delete('/api/activities/:id', (req, res) => {
+app.delete('/api/activities/:id', (req, res) => {
   const { id } = req.params;
   const sql = 'DELETE FROM activities WHERE id = ?';
   db.run(sql, [id], function (err) {
