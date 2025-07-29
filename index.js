@@ -272,7 +272,7 @@ app.get('/api/lessons', async (req, res) => {
 });
 
 // DELETE /api/activities/:id
-app.delete('/api/activities/id', (req, res) => {
+app.delete('/api/activities/:id', (req, res) => {
   const { id } = req.params;
 
   const sql = 'DELETE FROM activities WHERE id = ?';
@@ -291,7 +291,7 @@ app.delete('/api/activities/id', (req, res) => {
 });
 
 // مثال: DELETE /api/lessons/:id
-app.delete('/api/lessons/id', (req, res) => {
+app.delete('/api/lessons/:id', (req, res) => {
   const lessonId = req.params.id;
 
   const sql = 'DELETE FROM lessons WHERE id = ?';
