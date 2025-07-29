@@ -20,7 +20,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
-
+const router=express.Router();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -46,6 +46,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
+app.use(express.urlencoded({extended:true}));
 // SQLite setup
 let db;
 (async () => {
@@ -272,10 +273,10 @@ app.get('/api/lessons', async (req, res) => {
 });
 
 // DELETE /api/activities/:id
-app.delete('/api/activities/:id', (req, res) => {
+router.delete('/api/activities/:id', (req, res) => {
   const { id } = req.params;
   const sql = 'DELETE FROM activities WHERE id = ?';
-  db.run(sql, [id], function (err) {
+ await db.run(sql, [id], function (err) {
     if (err) {
       return res.status(500).json({ message: 'فشل في حذف النشاط' });
     }
